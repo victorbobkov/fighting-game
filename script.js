@@ -12,6 +12,7 @@ class Sprite {
    constructor({ position, velocity, color = 'red' }) {
       this.position = position
       this.velocity = velocity
+      this.width = 50
       this.height = 150
       this.lastKey
       this.attackBox = {
@@ -25,7 +26,7 @@ class Sprite {
    draw() {
       // Player and Enemy rectangles
       context.fillStyle = this.color
-      context.fillRect(this.position.x, this.position.y, 50, this.height)
+      context.fillRect(this.position.x, this.position.y, this.width, this.height)
 
       // Attack Box
       context.fillStyle = 'green'
@@ -117,6 +118,16 @@ const animate = () => {
       enemy.velocity.x = -5
    } else if (keys.ArrowRight.pressed && enemy.lastKey === 'ArrowRight') {
       enemy.velocity.x = 5
+   }
+
+   // Detect for collision
+   if (
+      player.attackBox.position.x + player.attackBox.width >= enemy.position.x &&
+      player.attackBox.position.x <= enemy.position.x + enemy.width &&
+      player.attackBox.position.y + player.attackBox.height >= enemy.position.y &&
+      player.attackBox.position.y <= enemy.position.y + enemy.height
+   ) {
+      console.log('Collision!')
    }
 }
 
