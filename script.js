@@ -174,7 +174,8 @@ const animate = () => {
       enemy.isAttacking
    ) {
       enemy.isAttacking = false
-      console.log('Enemy attacked player!')
+      player.health -= 20
+      document.querySelector('#player-health').style.width = player.health + '%'
    }
 }
 

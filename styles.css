@@ -34,9 +34,23 @@
     width: 100%;
 }
 
+.player-health-container {
+    position: relative;
+    height: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
 .enemy-health-box {
     background-color: yellow;
     height: 30px;
+}
+
+.player-health-box {
+    background-color: yellow;
+    height: 30px;
+    width: 100%;
 }
 
 .enemy-health-bar {
@@ -46,4 +60,13 @@
     bottom: 0;
     right: 0;
     left: 0;
+}
+
+.player-health-bar {
+    position: absolute;
+    background: blue;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
 }
