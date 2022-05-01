@@ -129,6 +129,28 @@ const rectangularCollision = ({ rectangle1, rectangle2 }) => {
    )
 }
 
+let timer = 20
+const decreaseTimer = () => {
+   if (timer > 0) {
+      setTimeout(decreaseTimer, 1000)
+      timer --
+      document.querySelector('#timer').innerHTML = timer
+   }
+
+   if (timer === 0) {
+      document.querySelector('#result-text').style.display = 'flex'
+      if (player.health === enemy.health) {
+         document.querySelector('#result-text').innerHTML = `Tie!`
+      } else if (player.health > enemy.health) {
+         document.querySelector('#result-text').innerHTML = `Player 1 Wins!`
+      } else if (player.health < enemy.health) {
+         document.querySelector('#result-text').innerHTML = `Player 2 Wins!`
+      }
+   }
+}
+
+decreaseTimer()
+
 const animate = () => {
    window.requestAnimationFrame(animate)
    context.fillStyle = 'black'
